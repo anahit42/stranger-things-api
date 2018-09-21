@@ -1,0 +1,24 @@
+{
+  "name": "stranger-things-api",
+  "version": "0.0.1",
+  "description": " API for getting twitter scraped data ",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anahit42/stranger-things-api.git"
+  },
+  "keywords": [
+    "API",
+    "scraping",
+    "twitter"
+  ],
+  "author": "Anahit Vardanyan",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/anahit42/stranger-things-api/issues"
+  },
+  "homepage": "https://github.com/anahit42/stranger-things-api#readme"
+}
