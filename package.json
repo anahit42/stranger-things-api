@@ -1,6 +1,6 @@
 {
   "name": "stranger-things-api",
-  "description": " API for getting twitter scraped data ",
+  "description": "API for getting twitter scraped data",
   "version": "0.0.1",
   "author": "Anahit Vardanyan",
   "bugs": {
