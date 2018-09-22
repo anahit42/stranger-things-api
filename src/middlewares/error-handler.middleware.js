@@ -4,18 +4,18 @@ class ErrorHandlerMiddleware {
    * @param {Object} req
    * @param {Object} res
    * @param {Function} next
-   * @description Error handler middleware function.
+   * @description Error handler middleware.
    */
   static handleError (error, req, res, next) {
-    const ERROR_CASE = ErrorHandlerMiddleware.ERROR_CASES[error.name] || ErrorHandlerMiddleware.ERROR_CASES.DEFAULT
+    const { ERROR_CASES } = ErrorHandlerMiddleware
+    const _error = ERROR_CASES[error.name] || ERROR_CASES.InternalServerError
 
     const errorResponse = {
-      status: ERROR_CASE.statusCode,
-      code: ERROR_CASE.errorCode,
-      message: ERROR_CASE.errorMessage || error.message
+      status: _error.statusCode,
+      code: _error.errorCode,
+      message: _error.errorMessage || error.message
     }
 
-    // temp. log to explore and add more cases.
     errorResponse.status === 500 && console.log('Error: ', error.name, error.message)
 
     res.status(errorResponse.status).json(errorResponse)
@@ -31,10 +31,10 @@ ErrorHandlerMiddleware.ERROR_CASES = {
     statusCode: 404,
     errorCode: 'NotFound'
   },
-  DEFAULT: {
+  InternalServerError: {
     statusCode: 500,
     errorCode: 'InternalError',
-    errorMessage: 'The server encountered an internal error. Try again later.'
+    errorMessage: 'Internal server error. Try again later.'
   }
 }
 
