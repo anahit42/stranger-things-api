@@ -23,7 +23,7 @@ class ErrorHandlerMiddleware {
 }
 
 ErrorHandlerMiddleware.ERROR_CASES = {
-  ValidationError: {
+  InputValidationError: {
     statusCode: 400,
     errorCode: 'InvalidInput'
   },
