@@ -3,19 +3,14 @@ const http = require('http')
 const app = require('./app')
 
 /**
- * @private
- * @param val
- * @return {*}
- * @description Normalize a port into a number, string, or false.
+ * @param portValue
+ * @return {number | boolean}
+ * @description Normalize a port into a number.
  */
-function _normalizePort (val) {
-  const port = parseInt(val, 10)
+function _normalizePort (portValue) {
+  const port = parseInt(portValue, 10)
 
-  if (isNaN(port)) { // named pipe
-    return val
-  }
-
-  if (port >= 0) { // port number
+  if (!isNaN(port) && port >= 0) {
     return port
   }
 
