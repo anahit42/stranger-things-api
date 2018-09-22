@@ -4,6 +4,7 @@
 ## Table of Contents
 
 * [GET /health](#get-health)
+* [GET /api/v1/statistics](#get-statistics)
 * [GET /api/v1/tweets](#list-tweets)
 
 
@@ -12,6 +13,14 @@
 <a name="get-health"></a>
 
 This endpoint is public and without API prefix.
+
+### GET /api/v1/statistics
+
+<a name="get-statistics"></a>
+
+| Parameter     | In     | Required | Default |  Type    |
+|---------------|--------|----------|---------|----------|
+| topic         | query  | ✔        | ✘       | string   |
 
 
 ### GET /api/v1/tweets
