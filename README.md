@@ -4,6 +4,7 @@ API for getting twitter scraped data
 
 # Table of Contents
 
+* [Endpoints](doc/ENDPOINTS.md)
 * [Environment Variables](#environment-variables)
 * [Starting Server](#starting-server)
 
