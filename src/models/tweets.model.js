@@ -4,21 +4,26 @@ const { TweetsSchema } = require('./schemas')
 
 class TweetsModel {
   /**
-   * @param {Object} createData
-   * @return {Promise<Object>}
-   * @description Create single tweet.
+   * @param {Object} [query]
+   * @return {Promise<number> | Query }
+   * @description Get tweets total count.
    */
-  static create (createData) {
-    return TweetsModel.model.create(createData)
+  static getTweetsTotalCount (query) {
+    return TweetsModel.model.find(query).countDocuments()
   }
 
   /**
-   * @param {Array} createData
+   * @param {Object} payload
+   * @param {Object} payload.query
+   * @param {number} payload.limit
+   * @param {number} payload.offset
    * @return {Promise<Array>}
-   * @description Create few tweets.
+   * @description List tweets.
    */
-  static bulkCreate (createData) {
-    return TweetsModel.model.create(createData)
+  static listTweets (payload) {
+    const { query, limit, offset } = payload
+
+    return TweetsModel.model.find(query).skip(offset).limit(limit)
   }
 }
 

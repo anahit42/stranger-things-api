@@ -12,6 +12,7 @@ const { ErrorsUtil } = require('./utils')
 const { PathNotFoundError } = ErrorsUtil
 
 const healthApi = require('./api/health/health.api')
+const api = require('./api')
 
 const app = express()
 
@@ -37,6 +38,11 @@ app.use(bodyParser.json({ limit: '5mb' }))
  * @description Add health API (NO authorization, NO api prefix).
  */
 app.use('/health', healthApi)
+
+/**
+ * @description Add API endpoints with api prefix.
+ */
+app.use('/api/v1', api)
 
 /**
  * @description Create PathNotFoundError and forward to the error handler middleware.
