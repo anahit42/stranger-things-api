@@ -1,19 +1,20 @@
-const CUSTOM_ERRORS = [
-  'PathNotFoundError',
-  'ValidationError'
-]
+class PathNotFoundError extends Error {
+  constructor (message) {
+    super()
+    this.message = message
+    this.name = this.constructor.name
+  }
+}
 
-const ERRORS = CUSTOM_ERRORS.reduce((acc, className) => {
-  acc[className] = ({
-    [className]: class extends Error {
-      constructor (msg) {
-        super(msg)
-        this.name = this.constructor.name
-      }
-    }
-  })[className]
+class ValidationError extends Error {
+  constructor (message) {
+    super()
+    this.message = message
+    this.name = this.constructor.name
+  }
+}
 
-  return acc
-}, {})
-
-module.exports = ERRORS
+module.exports = {
+  PathNotFoundError,
+  ValidationError
+}
