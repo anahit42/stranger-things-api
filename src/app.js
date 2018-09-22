@@ -39,7 +39,7 @@ app.use(bodyParser.json({ limit: '5mb' }))
 app.use('/health', healthApi)
 
 /**
- * @description Middleware - catch 404 and forward to error handler.
+ * @description Create PathNotFoundError and forward to the error handler middleware.
  */
 app.use((req, res, next) => next(new PathNotFoundError('The specified resource path does not exist.')))
 
