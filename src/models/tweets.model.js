@@ -4,6 +4,41 @@ const { TweetsSchema } = require('./schemas')
 
 class TweetsModel {
   /**
+   * @param {string} topic
+   * @return {Promise<Array>}
+   * @description Get tweets statistics about a topic.
+   */
+  static getTweetsStatisticsAboutTopic (topic) {
+    const matchStage = { $match: { topic } }
+    const projectStage = {
+      $project: {
+        topic: 1,
+        tweetId: 1,
+        userId: 1,
+        createdAt: 1,
+        favoriteCount: 1,
+        retweetCount: 1,
+        language: 1,
+        text: 1
+      }
+    }
+
+    const groupStage = {
+      $group: {
+        _id: {
+          month: { $month: '$createdAt' },
+          day: { $dayOfMonth: '$createdAt' },
+          year: { $year: '$createdAt' }
+        },
+        tweets: { $push: '$$ROOT' },
+        totalCount: { $sum: 1 }
+      }
+    }
+
+    return TweetsModel.model.aggregate([ matchStage, projectStage, groupStage ])
+  }
+
+  /**
    * @param {Object} [query]
    * @return {Promise<number> | Query }
    * @description Get tweets total count.
