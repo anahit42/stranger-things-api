@@ -23,6 +23,30 @@ This endpoint is public and without API prefix.
 | topic         | query  | ✔        | ✘       | string   |
 
 
+Response data example:
+
+
+```javascript
+{
+    "status": 200,
+    "message": "OK",
+    "data": [
+        {
+            "month": 9,
+            "day": 23,
+            "year": 2018,
+            "totalCount": 7453
+        },
+        {
+            "month": 9,
+            "day": 22,
+            "year": 2018,
+            "totalCount": 3176
+        }
+    ]
+}
+```
+
 ### GET /api/v1/tweets
 
 <a name="list-tweets"></a>

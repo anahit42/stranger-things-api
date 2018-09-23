@@ -11,16 +11,7 @@ class TweetsModel {
   static getTweetsStatisticsAboutTopic (topic) {
     const matchStage = { $match: { topic } }
     const projectStage = {
-      $project: {
-        topic: 1,
-        tweetId: 1,
-        userId: 1,
-        createdAt: 1,
-        favoriteCount: 1,
-        retweetCount: 1,
-        language: 1,
-        text: 1
-      }
+      $project: { createdAt: 1 }
     }
 
     const groupStage = {
@@ -30,12 +21,24 @@ class TweetsModel {
           day: { $dayOfMonth: '$createdAt' },
           year: { $year: '$createdAt' }
         },
-        tweets: { $push: '$$ROOT' },
+        month: { '$first': { $month: '$createdAt' } },
+        day: { '$first': { $dayOfMonth: '$createdAt' } },
+        year: { '$first': { $year: '$createdAt' } },
         totalCount: { $sum: 1 }
       }
     }
 
-    return TweetsModel.model.aggregate([ matchStage, projectStage, groupStage ])
+    const secondProjectStage = {
+      $project: {
+        _id: 0,
+        month: 1,
+        day: 1,
+        year: 1,
+        totalCount: 1
+      }
+    }
+
+    return TweetsModel.model.aggregate([ matchStage, projectStage, groupStage, secondProjectStage ])
   }
 
   /**
