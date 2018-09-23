@@ -6,7 +6,8 @@ API for getting twitter scraped data
 
 * [Endpoints](doc/ENDPOINTS.md)
 * [Environment Variables](#environment-variables)
-* [Starting Server](#starting-server)
+* [Starting Server Locally](#starting-server-locally)
+* [Starting Server In Docker Container](doc/DOCKER.md)
 
 ## Environment Variables
 
@@ -18,9 +19,13 @@ Required Environment Variables.
 
 
 
-## Starting Server
+## Starting Server Locally
 
-You need to provide all environment variables and then start API server with the following command:
+To start API server locally you need to:
+
+1. Start MongoDB server
+2. Provide all environment variables
+3. Type the following command in terminal
 
 ```
 npm start
