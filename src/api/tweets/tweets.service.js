@@ -1,6 +1,6 @@
 const { TweetsModel } = require('../../models')
 
-const { ResponseHandlerUtil, SuccessHandlerUtil } = require('../../utils')
+const { CommonUtil, ResponseHandlerUtil, SuccessHandlerUtil } = require('../../utils')
 
 class TweetsService {
   /**
@@ -12,8 +12,9 @@ class TweetsService {
   static async listTweets (req, res, next) {
     const limit = parseInt(req.query.limit, 10) || 20
     const offset = parseInt(req.query.offset, 10) || 0
-    const { topic } = req.query
-    const query = topic ? { topic } : {}
+    const { language, topic } = req.query
+
+    const query = CommonUtil.deleteObjectUndefinedKeys({ language, topic })
 
     try {
       const [ tweets, totalCount ] = await Promise.all([
