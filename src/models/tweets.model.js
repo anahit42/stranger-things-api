@@ -24,7 +24,7 @@ class TweetsModel {
         month: { '$first': { $month: '$createdAt' } },
         day: { '$first': { $dayOfMonth: '$createdAt' } },
         year: { '$first': { $year: '$createdAt' } },
-        totalCount: { $sum: 1 }
+        tweetsCount: { $sum: 1 }
       }
     }
 
@@ -34,7 +34,7 @@ class TweetsModel {
         month: 1,
         day: 1,
         year: 1,
-        totalCount: 1
+        tweetsCount: 1
       }
     }
 

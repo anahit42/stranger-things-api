@@ -9,6 +9,7 @@ module.exports = {
    */
   listTweetsArgsSchema: {
     query: {
+      language: Joi.string().length(2),
       limit: Joi.number().positive().max(API_LIMIT_MAX_VALUE).integer(),
       offset: Joi.number().positive().integer(),
       topic: Joi.string().valid(TOPICS)
