@@ -7,7 +7,6 @@ API for getting twitter scraped data
 * [Endpoints](doc/ENDPOINTS.md)
 * [Environment Variables](#environment-variables)
 * [Starting Server Locally](#starting-server-locally)
-* [Starting Server In Docker Container](doc/DOCKER.md)
 
 ## Environment Variables
 
